@@ -1,0 +1,374 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  background-color: #008080;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+button {
+  cursor: pointer;
+}
+
+.image-banner {
+  width: 600px;
+  margin: 0 0 40px 0;
+}
+
+/* MODAL */
+
+.modal {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-active {
+  display: flex;
+}
+
+.content-modal {
+  position: relative;
+  width: 580px;
+  height: 500px;
+  background-color: lightgray;
+  border-radius: 5px;
+  padding: 50px 10px;
+}
+
+.content-modal .form-assign-place-parking {
+  display: block;
+}
+
+.content-modal .form-brand-model-actions {
+  display: none;
+}
+
+.content-modal .form-open {
+  display: block !important;
+}
+
+.content-modal .form-close {
+  display: none !important;
+}
+
+.content-btn-close-modal {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.content-btn-down {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.content-btn-down button {
+  width: 90px;
+  height: 40px;
+  margin: 0 10px 0 0;
+}
+
+.content-btn-down .btn-return-form-car {
+  display: none;
+}
+
+.content-btn-down .btn-return-form-car-active {
+  display: block !important;
+}
+
+.modal-body {
+  display: block;
+}
+
+.modal-body hr {
+  margin: 20px 0 20px 0;
+}
+
+
+.modal-body .field {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  margin-top: 20px;
+}
+
+.modal-body .field-large {
+  width: 350px;
+}
+
+.modal-body > .field:nth-child(1) {
+  margin: 0;
+}
+
+.modal-body .field-multe {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.modal-body .field-multe .field {
+  margin-right: 10px;
+}
+
+.modal-body .field label {
+  font-size: 12px;
+}
+
+.modal-body .field input {
+  font-size: 12px;
+  outline: none;
+  resize: none;
+}
+
+.modal-body .field input.input-registration {
+  text-transform: uppercase;
+}
+
+.modal-body .field textarea {
+  font-size: 12px;
+  outline: none;
+  resize: none;
+}
+
+.modal-body .field select {
+  font-size: 12px;
+  outline: none;
+  resize: none;
+}
+
+.modal-body .field button {
+  width: 100px;
+  outline: none;
+  margin-top: 17px;
+  font-size: 12px;
+}
+
+.modal-body .field .text-note {
+  font-size: 8px;
+  margin: 2px 0 0 0;
+}
+
+.form-assign-place-parking {
+  display: none;
+}
+
+/* LIST COLORS (COMPONENT) */
+
+.listcolors {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+  width: 200px;
+}
+
+.listcolors .body-items {
+  display: flex;
+  flex-direction: column;
+}
+
+.listcolors .body-items .item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: calc(100% - 10px);
+  padding: 0 5px 0 5px;
+}
+
+.listcolors .body-items .item span {
+  font-size: 15px;
+  font-weight: 300;
+}
+
+.listcolors .body-items .item:nth-child(odd) {
+  background-color: #adafb3;
+}
+
+.listcolors .body-items .item .btn-remove-item {
+  padding: 2px 0 0 0;
+}
+
+.listcolors .form-add-items {
+  display: flex;
+  flex-direction: row;
+}
+
+.listcolors .form-add-items input {
+  height: 14px;
+  margin: 10px 10px 0 0;
+}
+
+.listcolors .form-add-items button {
+  margin: 10px 10px 0 0;
+}
+
+footer {
+  margin: 50px 0 0 0;
+  font-size: 15px;
+  color: lightgrey;
+}
+
+/* DASHBOARD */
+
+.container-dashboar {
+  display: flex;
+  flex-direction: row;
+}
+
+.model {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 500px;
+  height: 500px;
+  border: 0px solid black;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: lightgray;
+}
+
+.model-center {
+  width: 100%;
+  color: red;
+  font-size: 4em;
+  text-align: center;
+}
+
+.model-left {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 490px;
+  height: 245px;
+}
+
+.model-right {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: end;
+  width: 490px;
+  height: 245px;
+}
+
+.space {
+  width: 98px;
+  height: 200px;
+  border: 1px solid black;
+}
+
+.content-space {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.number-space {
+  margin-top: 10px;
+  font-size: 2.5em;
+  color: red;
+}
+
+.check-occupied {
+  margin-top: 40px;
+  padding: 5px;
+  width: 70px;
+  font-size: 0.7em;
+  font-weight: 700;
+  border-radius: 5px;
+  color: #ff8533;
+  background-color: #aa3600;
+  text-align: center;
+  cursor: pointer;
+}
+
+.check-occupied span:nth-child(2) {
+  display: none;
+}
+
+.check-occupied:hover span:nth-child(1) {
+  display: none;
+}
+
+.check-occupied:hover span:nth-child(2) {
+  display: block;
+}
+
+.check-unoccupied {
+  margin-top: 40px;
+  padding: 5px;
+  width: 70px;
+  font-size: 0.7em;
+  font-weight: 700;
+  border-radius: 5px;
+  color: #33ffff;
+  background-color: #007faa;
+  text-align: center;
+  cursor: pointer;
+}
+
+.check-unoccupied span:nth-child(2) {
+  display: none;
+}
+
+.check-unoccupied:hover span:nth-child(1) {
+  display: none;
+}
+
+.check-unoccupied:hover span:nth-child(2) {
+  display: block;
+}
+
+.registration {
+  margin-top: 10px;
+  font-weight: 800;
+  font-size: 1em;
+  color: #2a1f00;
+  text-align: center;
+}
+
+.content-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0px 5px;
+  height: 250px;
+}
+
+.wrapper-button {
+  display: block;
+}
+
+.wrapper-button button {
+  width: 80px;
+  height: 40px;
+  border-radius: 5px;
+}
+
+.wrapper-button.wrapper-button-right button {
+  width: 120px;
+}
+
+.wrapper-button button.active {
+  border: 1px solid red;
+}

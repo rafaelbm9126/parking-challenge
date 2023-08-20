@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="/app/public/favicon.ico"
+    />
+    <link rel="stylesheet" href="/app/public/styles.css" />
+    <link href="https://fonts.cdnfonts.com/css/poppins" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Parking Challenge</title>
+  </head>
+  <body>
+    <div class="container">
+      <img class="image-banner" src="/app/public/banner.png" alt="banner">
+      <div class="modal">
+        <div class="content-modal">
+          <div class="content-btn-close-modal" onclick="close_modal()">
+            <i class="fa fa-close"></i>
+          </div>
+          <div class="form-assign-place-parking">
+            <div class="modal-body">
+              <div class="field">
+                <label for="registration">Patente</label>
+                <input
+                  type="text"
+                  name="registration"
+                  id="registration"
+                  class="input-registration"
+                  maxlength="7"
+                  autocomplete="off"
+                  onchange="load_car_form()"
+                />
+              </div>
+              <div class="field field-large">
+                <label for="description">Descripcion</label>
+                <textarea
+                  type="text"
+                  name="description"
+                  id="description"
+                  maxlength="256"
+                  rows="7"
+                ></textarea>
+              </div>
+              <div class="field-multe">
+                <div class="field">
+                  <label for="select-brand">Marca</label>
+                  <select
+                    id="select-brand"
+                    onchange="get_model_by_brand()"
+                  ></select>
+                </div>
+                <div class="field">
+                  <label for="select-model">Modelo</label>
+                  <select name="model_id" id="select-model"></select>
+                </div>
+                <div class="field">
+                  <button id="add-new-model" onclick="open_form_brand_model_from_car()">
+                    <i class="fa fa-add"></i>
+                    Modelo
+                  </button>
+                </div>
+              </div>
+              <div class="field">
+                <label for="registration">Lista de Colores</label>
+                <div class="listcolors">
+                  <input
+                    type="hidden"
+                    name="json_colors"
+                    id="json-colors"
+                    value="[]"
+                  />
+                  <div class="body-items" id="body-items"></div>
+                  <div class="form-add-items">
+                    <input type="text" id="item-color-name" />
+                    <button id="add_new_color" onclick="add_item_color()">
+                      <i class="fa fa-add"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="content-btn-down">
+              <button id="btn-form-car-clear" onclick="clear_form_car()">
+                <i class="fa fa-broom"></i>
+                Limpiar
+              </button>
+              <button id="btn-form-car-save" onclick="save_car()" disabled>
+                <i class="fa fa-save"></i>
+                Guardar
+              </button>
+              <button
+                id="btn-form-car-next"
+                onclick="save_assign_place_parking()"
+                disabled
+              >
+                <i class="fa fa-caret-right"></i>
+                Asignar
+              </button>
+            </div>
+          </div>
+          <div class="form-brand-model-actions">
+            <div class="modal-body">
+              <h3>Agregar nueva marca</h3>
+              <div class="field-multe">
+                <div class="field">
+                  <label for="act-brand-name">Marca</label>
+                  <input
+                    type="text"
+                    name="act-brand-name"
+                    id="act-brand-name"
+                    class="act-brand-name"
+                    maxlength="80"
+                    autocomplete="off"
+                  />
+                  <span class="text-note">*Ingrese nombre de la nueva marca</span>
+                </div>
+                <div class="field">
+                  <button onclick="save_new_brand()">
+                    <i class="fa fa-save"></i>
+                    Guardar
+                  </button>
+                </div>
+              </div>
+              <hr>
+              <h3>Agregar nuevo modelo</h3>
+              <div class="field">
+                <label for="act-select-brand">Marca</label>
+                <select id="act-select-brand" onchange="get_model_by_brand()""></select>
+              </div>
+              <div class="field-multe">
+                <div class="field">
+                  <label for="act-model-name">Modelo</label>
+                  <input
+                    type="text"
+                    name="act-model-name"
+                    id="act-model-name"
+                    class="act-model-name"
+                    maxlength="80"
+                    autocomplete="off"
+                  />
+                  <span class="text-note">*Ingrese nombre del modelo</span>
+                </div>
+                <div class="field">
+                  <button onclick="save_new_model()">
+                    <i class="fa fa-save"></i>
+                    Guardar
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="content-btn-down">
+              <button
+                class="btn-return-form-car"
+                onclick="close_form_brand_model_from_car()"
+              >
+                <i class="fa fa-rotate-left"></i>
+                Regresar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container-dashboar">
+        <div class="content-buttons">
+          <div class="wrapper-button wrapper-button-right">
+            <button id="btn-1" onclick="open_modal(2)">
+              <i class="fa fa-add"></i>
+              Marca/Modelo
+            </button>
+          </div>
+        </div>
+        <div class="model" id="model">
+          <input type="hidden" name="car_id" id="car_id" value="" />
+          <div class="model-left" id="model-left"></div>
+          <div class="model-center" id="model-center"></div>
+          <div class="model-right" id="model-right"></div>
+        </div>
+        <div class="content-buttons">
+          <div class="wrapper-button">
+            <button id="floor-btn-1" onclick="update_floor(1)">Piso 1</button>
+          </div>
+          <div class="wrapper-button">
+            <button id="floor-btn-2" onclick="update_floor(2)">Piso 2</button>
+          </div>
+          <div class="wrapper-button">
+            <button id="floor-btn-3" onclick="update_floor(3)">Piso 3</button>
+          </div>
+          <div class="wrapper-button">
+            <button id="floor-btn-4" onclick="update_floor(4)">Piso 4</button>
+          </div>
+          <div class="wrapper-button">
+            <button id="floor-btn-5" onclick="update_floor(5)">Piso 5</button>
+          </div>
+        </div>
+      </div>
+      <footer>
+        Parking Challenge &copy; 2023
+      </footer>
+    </div>
+
+    <script src="/app/public/index.js"></script>
+  </body>
+</html>

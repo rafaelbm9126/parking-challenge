@@ -1,0 +1,22 @@
+version: '3'
+services:
+
+  service:
+    image: mattrayner/lamp:latest-1804
+    user: root
+    ports:
+      - 8000:80
+      - 3306:3306
+    expose:
+      - 80
+    volumes:
+      - ${PWD}:/app
+    working_dir: /app
+    networks:
+      - secure
+    env_file:
+      - .env
+
+networks:
+  secure:
+    driver: bridge
